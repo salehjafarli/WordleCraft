@@ -1,0 +1,15 @@
+name: WordleCraft
+version: '${project.version}'
+main: me.saleh.wordlecraft.WordleCraft
+description: Wordle game in Minecraft console!
+api-version: 1.18
+commands:
+  wstart:
+    description: Starting Wordle game
+  wguess:
+    description: Making guess
+  wgetword:
+    description: OP command for get current correct word
+  wstop:
+    description: OP command for stop ongoing game
+
