@@ -38,7 +38,7 @@ public class WordleGame {
         }
         return res;
     }
-    public GuessLevel CheckChar(char c,int index){
+    private GuessLevel CheckChar(char c,int index){
         if(SelectedWord.charAt(index) == c){
             return GuessLevel.Correct;
         }
@@ -56,6 +56,4 @@ public class WordleGame {
         List<String> words =(List<String>) wordObj;
         return words.get(index);
     }
-
-
 }

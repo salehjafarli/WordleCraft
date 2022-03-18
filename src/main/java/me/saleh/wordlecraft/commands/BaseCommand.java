@@ -5,5 +5,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.ConsoleCommandSender;
 
 public abstract class BaseCommand implements CommandExecutor {
-
+    protected void Broadcast(String message){
+        Bukkit.broadcastMessage(message);
+    }
 }

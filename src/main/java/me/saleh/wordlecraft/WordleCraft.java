@@ -4,6 +4,8 @@ import me.saleh.wordlecraft.commands.WordleGetWordCommand;
 import me.saleh.wordlecraft.commands.WordleGuessCommand;
 import me.saleh.wordlecraft.commands.WordleStopCommand;
 import me.saleh.wordlecraft.commands.WorldeStartCommand;
+import me.saleh.wordlecraft.commands.WordleGetLeaderboardCommand;
+import me.saleh.wordlecraft.commands.WordleGetScoreCommand;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class WordleCraft extends JavaPlugin {
@@ -15,6 +17,8 @@ public final class WordleCraft extends JavaPlugin {
         this.getCommand("wguess").setExecutor(new WordleGuessCommand());
         this.getCommand("wgetword").setExecutor(new WordleGetWordCommand());
         this.getCommand("wstop").setExecutor(new WordleStopCommand());
+        this.getCommand("wleaderboard").setExecutor(new WordleGetLeaderboardCommand());
+        this.getCommand("wscore").setExecutor(new WordleGetScoreCommand());
     }
 
     @Override

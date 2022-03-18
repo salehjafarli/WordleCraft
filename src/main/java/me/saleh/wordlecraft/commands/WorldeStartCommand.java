@@ -15,16 +15,16 @@ public class WorldeStartCommand  extends BaseCommand {
         if(sender instanceof Player p)
         {
             if(WordleGame.IsStarted){
-                Bukkit.broadcastMessage("There is already an ongoing game!");
+                Broadcast("There is already an ongoing game!");
             }
             else{
                 WordleGame.Start();
-                Bukkit.broadcastMessage(Messages.GameIsStarted);
+                Broadcast(Messages.GameIsStarted);
             }
             //
         }
         else{
-            Bukkit.broadcastMessage(Messages.NotSentByPlayer);
+           System.out.println(Messages.NotSentByPlayer);
         }
         return true;
     }

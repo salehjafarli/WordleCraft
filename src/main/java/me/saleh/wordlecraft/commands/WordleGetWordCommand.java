@@ -13,15 +13,20 @@ public class WordleGetWordCommand extends BaseCommand {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if(sender instanceof Player p){
             if(p.isOp()){
-                Bukkit.broadcastMessage(WordleGame.Game.SelectedWord);
+                if(WordleGame.Game == null){
+                    p.sendMessage(Messages.OfferStart);
+                }
+                else{
+                    p.sendMessage(WordleGame.Game.SelectedWord);
+                }
             }
             else{
-                Bukkit.broadcastMessage(Messages.NoPermission);
+                p.sendMessage(Messages.NoPermission);
             }
         }
         else{
-            Bukkit.broadcastMessage(Messages.NotSentByPlayer);
-        }
+            System.out.println(Messages.NotSentByPlayer);
+        } 
         return true;
     }
 }

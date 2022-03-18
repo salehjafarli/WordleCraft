@@ -11,15 +11,15 @@ import org.bukkit.entity.Player;
 
 import java.util.Arrays;
 
-public class WordleGuessCommand implements CommandExecutor {
+public class WordleGuessCommand extends BaseCommand {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if(sender instanceof Player p){
             if(args.length > 1){
-                System.out.println("Too many arguments for command");
+                p.sendMessage("Too many arguments for command");
             }
             else if(args.length == 0){
-                System.out.println("No argument was provided");
+                p.sendMessage("No argument was provided");
             }
             else{
                 String word = args[0];
@@ -39,10 +39,10 @@ public class WordleGuessCommand implements CommandExecutor {
                     //
                 }
                 else if(wordLength < 5){
-                    System.out.println("The word does not contain enough letters");
+                    p.sendMessage("The word does not contain enough letters");
                 }
                 else{
-                    System.out.println("The word contain too many letters");
+                    p.sendMessage("The word contain too many letters");
                 }
             }
         }

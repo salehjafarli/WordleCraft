@@ -12,4 +12,7 @@ commands:
     description: OP command for get current correct word
   wstop:
     description: OP command for stop ongoing game
-
+  wleaderboard:
+    description: Get game leaderboard(Top 10 players)
+  wscore:
+    description: Get your score

@@ -12,16 +12,21 @@ public class WordleStopCommand extends  BaseCommand{
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if(sender instanceof Player p){
             if(p.isOp()){
-                String CorrectWord = WordleGame.Game.SelectedWord;
-                WordleGame.Stop();
-                Bukkit.broadcastMessage(String.format("The game is stopped.The correct word was : %s",CorrectWord));
+                if(WordleGame.Game == null){
+                    p.sendMessage(Messages.OfferStart);
+                }
+                else{
+                    String CorrectWord = WordleGame.Game.SelectedWord;
+                    WordleGame.Stop();
+                    Broadcast(String.format("The game is stopped.The correct word was : %s",CorrectWord));
+                }
             }
             else{
-                Bukkit.broadcastMessage(Messages.NoPermission);
+                p.sendMessage(Messages.NoPermission);
             }
         }
         else{
-            Bukkit.broadcastMessage(Messages.NotSentByPlayer);
+            System.out.println(Messages.NotSentByPlayer);
         }
         return true;
     }
