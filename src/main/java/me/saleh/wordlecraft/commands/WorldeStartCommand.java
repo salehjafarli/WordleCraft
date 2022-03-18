@@ -21,7 +21,6 @@ public class WorldeStartCommand  extends BaseCommand {
                 WordleGame.Start();
                 Broadcast(Messages.GameIsStarted);
             }
-            //
         }
         else{
            System.out.println(Messages.NotSentByPlayer);
