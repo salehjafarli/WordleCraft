@@ -1,5 +1,5 @@
 # WordleCraft
-WordleCraft is an adaptation of famous Wordle game in minecraft console.
+WordleCraft plugin is an adaptation of famous Wordle game in minecraft console.
 
 
 <img src="https://user-images.githubusercontent.com/81613563/159116789-6be5ecc7-655f-424c-91b1-611c6661092d.PNG">
