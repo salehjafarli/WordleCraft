@@ -1,13 +1,9 @@
 package me.saleh.wordlecraft.utils;
-
 import me.saleh.wordlecraft.GuessLevel;
 import org.bukkit.ChatColor;
-
-import java.util.HashMap;
 import java.util.Map;
-
 public class GuessStatusMapper {
-    private static Map<GuessLevel, ChatColor> Colors = Map.of(
+    private static final Map<GuessLevel, ChatColor> Colors = Map.of(
             GuessLevel.Correct,ChatColor.GREEN,
             GuessLevel.CorrectButWrongPlace,ChatColor.YELLOW,
             GuessLevel.Wrong,ChatColor.GRAY

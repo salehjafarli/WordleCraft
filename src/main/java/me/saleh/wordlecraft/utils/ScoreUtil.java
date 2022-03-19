@@ -1,36 +1,35 @@
 package me.saleh.wordlecraft.utils;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
-import me.saleh.wordlecraft.WordleGame;
-import org.checkerframework.common.value.qual.IntRangeFromGTENegativeOne;
-import org.yaml.snakeyaml.Yaml;
-
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-import java.util.stream.Stream;
+import static me.saleh.wordlecraft.utils.YAMLUtil.ImportYAML;
 
 public class ScoreUtil {
 
     //Create new YAML file on plugin enable,and r/w data
     //scores.yml init!!!
-
+    private static final String ScoreYml = ".\\plugins\\WordleCraft\\scores.yml";
     public static void SetScore(String username) throws IOException {
-        Map<String,Integer> data = ImportYAML();
-
+        Map<String,Integer> data = ImportYAML(ScoreYml);
+        if(data == null){
+            System.out.println("SetScore - data is null");
+            return;
+        }
         data.put(username,data.get(username) == null ? 1 : data.get(username)  + 1);
-        System.out.println("testt");
         ObjectMapper om = new ObjectMapper(new YAMLFactory());
-        om.writeValue(GetYAMLAsFile(),data);
+        om.writeValue(new File(ScoreYml), data);
     }
     public static String GetLeaderboard(){
-        Map<String,Integer> data = ImportYAML();
+        Map<String,Integer> data = ImportYAML(ScoreYml);
+        if(data == null){
+            System.out.println("GetLeaderboard - data is null");
+            return "";
+        }
         String result = "";
         var list = GetTopTen(data);
         for (Map.Entry<String, Integer> pair : list) {
@@ -39,8 +38,11 @@ public class ScoreUtil {
         return result;
     }
     public static Integer GetScore(String userName){
-        System.out.println(userName);
-        Map<String,Integer> data = ImportYAML();
+        Map<String,Integer> data = ImportYAML(ScoreYml);
+        if(data == null){
+            System.out.println("GetScore - data is null");
+            return 0;
+        }
         for(Map.Entry<String,Integer> pair : data.entrySet()){
             System.out.println(pair.getKey());
             if(Objects.equals(pair.getKey(), userName)){
@@ -49,19 +51,6 @@ public class ScoreUtil {
         }
         return 0;
     }
-    private static File GetYAMLAsFile(){
-        //Dont read that file from resource,instead read from jar directory path
-        ClassLoader classLoader = WordleGame.class.getClassLoader();
-        File file = new File(classLoader.getResource("scores.yml").getFile());
-        return file;
-    }
-    private static Map<String,Integer> ImportYAML(){
-        //Dont read that file from resource,instead read from jar directory path
-        InputStream inputStream = WordleGame.class.getClassLoader().getResourceAsStream("scores.yml");
-        Yaml yaml = new Yaml();
-        return yaml.load(inputStream);
-    }
-
     private static List<Map.Entry<String, Integer>> GetTopTen (Map<String,Integer> data){
         List<Map.Entry<String, Integer>> result = new ArrayList<>(10);
         for(Map.Entry<String,Integer> pair : data.entrySet()){
@@ -75,8 +64,6 @@ public class ScoreUtil {
         }
         return  result;
     }
-
-
     private static void add(List<Map.Entry<String, Integer>> result,Map.Entry<String,Integer> num){
         if( result.size() == 0){
             result.add(num);

@@ -6,13 +6,19 @@ api-version: 1.18
 commands:
   wstart:
     description: Starting Wordle game
+    usage : /<command>
   wguess:
     description: Making guess
+    usage : /<command> <guess>
   wgetword:
     description: OP command for get current correct word
+    usage : /<command>
   wstop:
     description: OP command for stop ongoing game
+    usage : /<command>
   wleaderboard:
     description: Get game leaderboard(Top 10 players)
+    usage : /<command>
   wscore:
     description: Get your score
+    usage : /<command> [username]
